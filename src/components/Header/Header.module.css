@@ -1,0 +1,57 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  
+  /* Efeito Cinematográfico */
+  background: rgba(43, 8, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(190, 145, 81, 0.1);
+}
+
+.logo {
+  font-family: var(--font-titles);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--highlight-gold);
+  letter-spacing: 1px;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.navLink {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-gold);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--highlight-gold);
+  transform: translateY(-2px);
+}
+
+/* O estilo base do botão está em globals.css, aqui podemos adicionar ajustes */
+.ctaButton {
+  background-color: var(--highlight-gold);
+  color: var(--background-dark);
+}
+
+/* Responsividade: esconder o menu de navegação em telas menores */
+@media (max-width: 768px) {
+  .navList {
+    display: none;
+  }
+}

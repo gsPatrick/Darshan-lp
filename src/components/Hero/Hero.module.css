@@ -1,0 +1,145 @@
+.heroSection {
+  height: 100vh;
+  min-height: 700px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5%;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* A imagem de fundo do cliente irá aqui */
+.backgroundImage {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../public//darshan.png'); 
+    background-size: cover;
+    /* >>> MUDANÇA EXCLUSIVA AQUI <<< */
+    background-position: center calc(50% + 50px); /* Move a imagem 50px para baixo a partir do centro */
+    transform: scale(1.05);
+    filter: brightness(0.5);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(43, 8, 0, 0.2) 0%, rgba(43, 8, 0, 0.9) 85%);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+      padding-top: 250px;
+}
+
+/* --- ESTILOS DE LETRA E BOTÕES REFEITOS --- */
+
+.title {
+  font-family: var(--font-hero-title); /* <<< NOVA FONTE APLICADA */
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  
+  /* Efeito de gradiente metálico inspirado na capa */
+  background: linear-gradient(180deg, var(--highlight-gold) 0%, var(--text-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  /* Sombra para dar profundidade e legibilidade */
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  max-width: 600px;
+  line-height: 1.6;
+  color: var(--text-gold);
+  text-transform: uppercase; /* <<< Deixando como na capa */
+  letter-spacing: 1.5px;    /* <<< Deixando como na capa */
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle strong {
+    color: var(--highlight-gold);
+    font-weight: 700;
+}
+
+.bulletPoints {
+  list-style: none;
+  margin-top: 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  max-width: 550px;
+  text-align: left;
+}
+
+.bulletItem {
+  font-size: 1.1rem;
+  color: var(--text-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.bulletItem span {
+  color: var(--highlight-gold);
+  font-weight: bold;
+}
+
+.ctaContainer {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Botão CTA Primário (ATUALIZADO em globals.css para consistência) */
+/* O botão secundário já usa a classe global secondary-button */
+
+.trustBar {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: rgba(190, 145, 81, 0.8);
+  letter-spacing: 0.5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem; /* Ajuste para mobile */
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .bulletPoints {
+    align-items: center;
+    text-align: center;
+  }
+}

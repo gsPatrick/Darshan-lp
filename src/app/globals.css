@@ -1,27 +1,16 @@
+/* Definição das fontes (Sugestão: Montserrat para títulos, Inter para corpo) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Paleta de Cores Cinematográfica */
+  --background-dark: #2b0800;
+  --text-gold: #be9151;
+  --highlight-gold: #f9cc7d;
+  --font-hero-title: 'Cinzel', serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Tipografia Premium */
+  --font-titles: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 * {
@@ -30,13 +19,48 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background-dark);
+  color: var(--text-gold);
+  font-family: var(--font-body);
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-titles);
+  color: var(--text-gold);
+}
+
+/* Estilo base para botões para manter a consistência */
+.cta-button {
+  padding: 12px 32px;
+  font-family: var(--font-titles);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--background-dark);
+  background-color: var(--highlight-gold);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(249, 204, 125, 0.2);
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: var(--highlight-gold);
+  border: 2px solid var(--highlight-gold);
 }

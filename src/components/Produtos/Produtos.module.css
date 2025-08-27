@@ -1,0 +1,190 @@
+.produtosSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #210600;
+  color: var(--text-gold);
+  /* Efeito de iluminação para preencher o fundo de forma elegante */
+  background-image: radial-gradient(circle at 25% 50%, rgba(190, 145, 81, 0.05) 0%, rgba(33, 6, 0, 0) 70%);
+}
+
+.imageContainer {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem; /* Adiciona um respiro para a moldura não colar nas bordas */
+}
+
+/* --- ESTILOS DA MOLDURA DOURADA --- */
+
+.frame {
+  position: relative;
+  width: 100%;
+  max-width: 450px; /* Limita o tamanho máximo da capa */
+  aspect-ratio: 2 / 3; /* Proporção comum de livro */
+  border-radius: 8px; /* Bordas levemente arredondadas */
+  
+  /* A Moldura Dourada */
+  border: 2px solid var(--highlight-gold);
+  
+  /* O Brilho (Glow) com Múltiplas Camadas */
+  box-shadow: 
+    0 0 10px rgba(249, 204, 125, 0.5), /* Glow interno */
+    0 0 30px rgba(249, 204, 125, 0.3), /* Glow externo */
+    inset 0 0 8px rgba(249, 204, 125, 0.2); /* Brilho sutil interno */
+
+  /* A Animação de Brilho Pulsante */
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* Definição da Animação */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 
+      0 0 10px rgba(249, 204, 125, 0.5),
+      0 0 30px rgba(249, 204, 125, 0.3),
+      inset 0 0 8px rgba(249, 204, 125, 0.2);
+  }
+  50% {
+    /* No pico, o brilho se expande e fica mais intenso */
+    box-shadow: 
+      0 0 20px rgba(249, 204, 125, 0.7),
+      0 0 45px rgba(249, 204, 125, 0.5),
+      inset 0 0 12px rgba(249, 204, 125, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 10px rgba(249, 204, 125, 0.5),
+      0 0 30px rgba(249, 204, 125, 0.3),
+      inset 0 0 8px rgba(249, 204, 125, 0.2);
+  }
+}
+
+/* O resto dos estilos permanece o mesmo */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 6rem;
+  gap: 1.5rem;
+}
+
+.mainTitle {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--highlight-gold);
+  line-height: 1.2;
+}
+
+.mainSubtitle {
+  font-size: 1.2rem;
+  color: var(--text-gold);
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  max-width: 500px;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+  background-color: var(--highlight-gold);
+  margin: 1rem 0;
+  border-radius: 2px;
+}
+
+.accordionContainer {
+  width: 100%;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.accordionItem {
+  width: 100%;
+  border-bottom: 1px solid rgba(190, 145, 81, 0.2);
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  transition: color 0.3s ease;
+}
+
+.accordionTitle {
+  font-family: var(--font-titles);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-gold);
+  transition: color 0.4s ease;
+}
+
+.accordionHeader.active .accordionTitle {
+  color: var(--highlight-gold);
+}
+
+.accordionIcon {
+  font-size: 1.5rem;
+  color: var(--text-gold);
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.accordionHeader.active .accordionIcon {
+  color: var(--highlight-gold);
+}
+
+.accordionText {
+  font-size: 1.1rem;
+  color: var(--text-gold);
+  line-height: 1.7;
+  padding: 0 0.5rem 1.5rem 0.5rem;
+  max-width: 480px;
+}
+
+.ctaButton {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .contentContainer {
+    padding: 4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .produtosSection {
+    grid-template-columns: 1fr;
+  }
+
+  .imageContainer {
+    width: 100%;
+    min-height: 70vh;
+  }
+  
+  .frame {
+    max-width: 300px; /* Diminui o tamanho da capa em mobile */
+  }
+
+  .contentContainer {
+    padding: 3rem 1.5rem;
+  }
+
+  .mainTitle {
+    font-size: 2.2rem;
+  }
+
+  .mainSubtitle, .accordionText {
+    font-size: 1rem;
+  }
+  
+  .accordionTitle {
+    font-size: 1.2rem;
+  }
+}

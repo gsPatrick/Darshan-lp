@@ -1,0 +1,112 @@
+.socialProofSection {
+  padding: 120px 5%;
+  background-color: #2b0800;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de luz dramático no fundo */
+.socialProofSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 150%;
+  height: 500px;
+  background: radial-gradient(ellipse at top, rgba(190, 145, 81, 0.08) 0%, rgba(43, 8, 0, 0) 70%);
+  transform: translateX(-50%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--highlight-gold);
+  margin-bottom: 1rem;
+}
+
+.trustBadge {
+  display: inline-block;
+  margin-bottom: 4rem;
+  padding: 10px 25px;
+  border: 1px solid rgba(190, 145, 81, 0.3);
+  background-color: rgba(190, 145, 81, 0.05);
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--text-gold);
+  letter-spacing: 1px;
+}
+
+.star {
+  color: var(--highlight-gold);
+  font-weight: bold;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  text-align: left;
+}
+
+.testimonialCard {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(190, 145, 81, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              border-color 0.4s ease;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border-color: rgba(249, 204, 125, 0.5);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--highlight-gold);
+}
+
+.name {
+  font-family: var(--font-titles);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.quote {
+  font-family: 'Georgia', serif; /* Fonte serifada para a citação, criando um look clássico */
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--text-gold);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,76 @@
+.sobreSection {
+  padding: 100px 5%;
+  background-color: #210600; /* Um tom ligeiramente mais claro para diferenciar */
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.imageContainer {
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+}
+
+.coachImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(190, 145, 81, 0.2);
+}
+
+.textContainer {
+  flex: 1.5;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--highlight-gold);
+  margin-bottom: 1.5rem;
+}
+
+.bio {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--text-gold);
+  margin-bottom: 2rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgba(190, 145, 81, 0.1);
+  border: 1px solid var(--text-gold);
+  border-radius: 8px;
+  color: var(--highlight-gold);
+  font-family: var(--font-titles);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .bio {
+    font-size: 1.1rem;
+  }
+}

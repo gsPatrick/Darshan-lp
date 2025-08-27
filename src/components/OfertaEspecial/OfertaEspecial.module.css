@@ -1,0 +1,197 @@
+.pageWrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--background-dark);
+  background-image: radial-gradient(ellipse at 50% 20%, rgba(190, 145, 81, 0.1), transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 5%;
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: var(--highlight-gold);
+  color: var(--background-dark);
+  border-radius: 30px;
+  font-family: var(--font-titles);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 20px rgba(249, 204, 125, 0.3);
+}
+
+.titulo {
+  font-family: var(--font-hero-title);
+  font-size: 4rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.subtitulo {
+  font-size: 1.25rem;
+  color: var(--text-gold);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.videoContainer {
+  width: 100%;
+  margin-bottom: 3rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(190, 145, 81, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.videoContainer:hover {
+  transform: scale(1.03);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(249, 204, 125, 0.3);
+}
+
+.videoPlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-gold);
+  cursor: pointer;
+}
+
+.videoPlaceholder span {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.playIconWrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(249, 204, 125, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+.videoPlaceholder:hover .playIconWrapper {
+    background: rgba(249, 204, 125, 0.2);
+}
+
+.playIcon {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid var(--highlight-gold);
+    margin-left: 5px;
+}
+
+.beneficiosWrapper {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto 3.5rem;
+  padding: 2.5rem 3rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(190, 145, 81, 0.1);
+  border-radius: 12px;
+}
+
+.beneficiosTitle {
+  font-family: var(--font-titles);
+  color: var(--highlight-gold);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.beneficiosList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.beneficiosList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-gold);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.checkIcon {
+  color: var(--highlight-gold);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.ctaPrincipal {
+  width: 100%;
+  max-width: 700px;
+  padding: 22px 40px;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 10px 20px rgba(249, 204, 125, 0.2); }
+  50% { transform: scale(1.03); box-shadow: 0 15px 35px rgba(249, 204, 125, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 10px 20px rgba(249, 204, 125, 0.2); }
+}
+
+.ctaRecusar {
+  display: block;
+  font-size: 1rem;
+  color: rgba(190, 145, 81, 0.6);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.ctaRecusar:hover {
+  color: var(--text-gold);
+  border-bottom-color: var(--text-gold);
+}
+
+@media (max-width: 768px) {
+  .titulo { font-size: 2.8rem; }
+  .pageWrapper { padding: 80px 5%; }
+  .beneficiosWrapper { padding: 2rem 1.5rem; }
+  .ctaPrincipal { font-size: 1.2rem; }
+}
