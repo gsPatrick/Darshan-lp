@@ -1,6 +1,6 @@
 .sobreSection {
   padding: 100px 5%;
-  background-color: #210600; /* Um tom ligeiramente mais claro para diferenciar */
+  background-color: #210600;
   overflow: hidden;
 }
 
@@ -12,10 +12,16 @@
   gap: 4rem;
 }
 
+.textContainer {
+  flex: 1.5;
+  order: 1;
+}
+
 .imageContainer {
   flex: 1;
   max-width: 400px;
   position: relative;
+  order: 2;
 }
 
 .coachImage {
@@ -25,10 +31,6 @@
   object-fit: cover;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
   border: 2px solid rgba(190, 145, 81, 0.2);
-}
-
-.textContainer {
-  flex: 1.5;
 }
 
 .title {
@@ -64,6 +66,14 @@
     flex-direction: column;
     text-align: center;
     gap: 2rem;
+  }
+  
+  .textContainer {
+    order: 2;
+  }
+  
+  .imageContainer {
+    order: 1;
   }
   
   .title {
