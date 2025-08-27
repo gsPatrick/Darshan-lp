@@ -1,8 +1,7 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import styles from './SobreCoach.module.css';
-import Image from 'next/image'; // Usaremos o componente Image do Next.js para otimização
+import Image from 'next/image';
 
 export default function SobreCoach() {
   const sectionVariants = {
@@ -24,22 +23,6 @@ export default function SobreCoach() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className={styles.container}>
-        <motion.div 
-          className={styles.imageContainer}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          viewport={{ once: true }}
-        >
-          {/* Substitua pela imagem real do Coach Darshan */}
-          <Image
-            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop"
-            alt="Coach Darshan Monteiro"
-            width={400}
-            height={500}
-            className={styles.coachImage}
-          />
-        </motion.div>
         <div className={styles.textContainer}>
           <h2 className={styles.title}>O Mentor por Trás da Coroa</h2>
           <p className={styles.bio}>
@@ -49,6 +32,22 @@ export default function SobreCoach() {
             Fundador do Movimento FDR
           </div>
         </div>
+        
+        <motion.div 
+          className={styles.imageContainer}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+          viewport={{ once: true }}
+        >
+          <Image
+            src="/darshan.png"
+            alt="Coach Darshan Monteiro"
+            width={400}
+            height={500}
+            className={styles.coachImage}
+          />
+        </motion.div>
       </div>
     </motion.section>
   );
