@@ -1,9 +1,10 @@
+/* /components/Produtos/Produtos.module.css */
+
 .produtosSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #210600;
   color: var(--text-gold);
-  /* Efeito de iluminação para preencher o fundo de forma elegante */
   background-image: radial-gradient(circle at 25% 50%, rgba(190, 145, 81, 0.05) 0%, rgba(33, 6, 0, 0) 70%);
 }
 
@@ -13,32 +14,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem; /* Adiciona um respiro para a moldura não colar nas bordas */
+  padding: 2rem;
 }
-
-/* --- ESTILOS DA MOLDURA DOURADA --- */
 
 .frame {
   position: relative;
   width: 100%;
-  max-width: 450px; /* Limita o tamanho máximo da capa */
-  aspect-ratio: 2 / 3; /* Proporção comum de livro */
-  border-radius: 8px; /* Bordas levemente arredondadas */
-  
-  /* A Moldura Dourada */
+  max-width: 450px;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
   border: 2px solid var(--highlight-gold);
-  
-  /* O Brilho (Glow) com Múltiplas Camadas */
   box-shadow: 
-    0 0 10px rgba(249, 204, 125, 0.5), /* Glow interno */
-    0 0 30px rgba(249, 204, 125, 0.3), /* Glow externo */
-    inset 0 0 8px rgba(249, 204, 125, 0.2); /* Brilho sutil interno */
-
-  /* A Animação de Brilho Pulsante */
+    0 0 10px rgba(249, 204, 125, 0.5),
+    0 0 30px rgba(249, 204, 125, 0.3),
+    inset 0 0 8px rgba(249, 204, 125, 0.2);
   animation: pulseGlow 4s infinite ease-in-out;
 }
 
-/* Definição da Animação */
 @keyframes pulseGlow {
   0% {
     box-shadow: 
@@ -47,7 +39,6 @@
       inset 0 0 8px rgba(249, 204, 125, 0.2);
   }
   50% {
-    /* No pico, o brilho se expande e fica mais intenso */
     box-shadow: 
       0 0 20px rgba(249, 204, 125, 0.7),
       0 0 45px rgba(249, 204, 125, 0.5),
@@ -61,13 +52,28 @@
   }
 }
 
-/* O resto dos estilos permanece o mesmo */
 .contentContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 5rem 6rem;
   gap: 1.5rem;
+}
+
+/* >>> ADICIONADO: Estilo para o novo tag <<< */
+.tag {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: rgba(190, 145, 81, 0.1);
+  border: 1px solid var(--text-gold);
+  border-radius: 20px;
+  color: var(--highlight-gold);
+  font-family: var(--font-titles);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
 }
 
 .mainTitle {
@@ -147,10 +153,20 @@
   max-width: 480px;
 }
 
-.ctaButton {
+/* >>> ADICIONADO: Container para os botões de CTA <<< */
+.ctaGroup {
   margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
   width: 100%;
 }
+
+/* Garante que os botões dentro do grupo se ajustem */
+.ctaGroup > a {
+  flex: 1; /* Faz os botões ocuparem o espaço igualmente */
+  text-align: center;
+}
+
 
 @media (max-width: 1024px) {
   .contentContainer {
@@ -169,7 +185,7 @@
   }
   
   .frame {
-    max-width: 300px; /* Diminui o tamanho da capa em mobile */
+    max-width: 300px;
   }
 
   .contentContainer {
@@ -186,5 +202,11 @@
   
   .accordionTitle {
     font-size: 1.2rem;
+  }
+
+  /* >>> ADICIONADO: Responsividade para os botões <<< */
+  .ctaGroup {
+    flex-direction: column; /* Empilha os botões verticalmente */
+    gap: 1rem;
   }
 }

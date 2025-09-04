@@ -1,3 +1,24 @@
+/* /components/OfertaEspecial/OfertaEspecial.module.css */
+
+/* >>> NOVO: Barra de Urgência Fixa <<< */
+.urgencyBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, var(--highlight-gold), #be9151);
+  color: var(--background-dark);
+  text-align: center;
+  font-family: var(--font-titles);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 1100;
+  box-shadow: 0 5px 20px rgba(249, 204, 125, 0.4);
+}
+
 .pageWrapper {
   min-height: 100vh;
   width: 100%;
@@ -6,7 +27,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 5%;
+  /* >>> Aumentado para dar espaço para a barra de urgência <<< */
+  padding: 120px 5% 80px;
 }
 
 .container {
@@ -50,67 +72,30 @@
   line-height: 1.7;
 }
 
-.videoContainer {
+/* >>> NOVO: Container de Vídeo Responsivo <<< */
+.videoWrapper {
+  position: relative;
   width: 100%;
+  aspect-ratio: 16 / 9; /* Garante a proporção do vídeo */
   margin-bottom: 3rem;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(190, 145, 81, 0.2);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.videoContainer:hover {
-  transform: scale(1.03);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(249, 204, 125, 0.3);
-}
-
-.videoPlaceholder {
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
   background-color: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-gold);
-  cursor: pointer;
 }
 
-.videoPlaceholder span {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    opacity: 0.7;
-}
-
-.playIconWrapper {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(249, 204, 125, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.3s ease;
-}
-.videoPlaceholder:hover .playIconWrapper {
-    background: rgba(249, 204, 125, 0.2);
-}
-
-.playIcon {
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 25px solid var(--highlight-gold);
-    margin-left: 5px;
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .beneficiosWrapper {
   width: 100%;
-  max-width: 650px;
+  max-width: 750px;
   margin: 0 auto 3.5rem;
   padding: 2.5rem 3rem;
   background-color: rgba(0, 0, 0, 0.2);
@@ -127,38 +112,54 @@
 }
 
 .beneficiosList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none; padding: 0; margin: 0;
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas de benefícios */
+  gap: 1.5rem 2rem;
 }
 
 .beneficiosList li {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  font-size: 1.1rem;
-  color: var(--text-gold);
-  font-weight: 500;
-  line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 1rem;
+  font-size: 1.05rem; color: var(--text-gold); font-weight: 500; line-height: 1.6;
 }
+.beneficiosList li strong { color: #fff; }
+.checkIcon { color: var(--highlight-gold); flex-shrink: 0; margin-top: 4px; }
 
-.checkIcon {
-  color: var(--highlight-gold);
-  flex-shrink: 0;
-  margin-top: 4px;
-}
 
-.ctaContainer {
+/* >>> NOVO: Caixa de Oferta <<< */
+.offerBox {
+  width: 100%;
+  max-width: 700px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  border: 2px solid var(--highlight-gold);
+  border-radius: 12px;
+  background: radial-gradient(ellipse at center, rgba(190, 145, 81, 0.1), transparent 80%);
+  box-shadow: 0 0 40px rgba(249, 204, 125, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  width: 100%;
+  gap: 0.5rem;
 }
+.offerNormalPrice {
+  font-size: 1.2rem;
+  color: var(--text-gold);
+}
+.offerSpecialPrice {
+  font-family: var(--font-titles);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+}
+.offerSave {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--highlight-gold);
+  text-transform: uppercase;
+}
+
+.ctaContainer { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; width: 100%; }
 
 .ctaPrincipal {
   width: 100%;
@@ -167,31 +168,128 @@
   font-size: 1.5rem;
   letter-spacing: 2px;
   animation: pulse 2.5s infinite ease-in-out;
+  line-height: 1.3;
 }
-
+.ctaSubtext {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  text-transform: none;
+}
 @keyframes pulse {
   0% { transform: scale(1); box-shadow: 0 10px 20px rgba(249, 204, 125, 0.2); }
   50% { transform: scale(1.03); box-shadow: 0 15px 35px rgba(249, 204, 125, 0.4); }
   100% { transform: scale(1); box-shadow: 0 10px 20px rgba(249, 204, 125, 0.2); }
 }
 
-.ctaRecusar {
-  display: block;
-  font-size: 1rem;
-  color: rgba(190, 145, 81, 0.6);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
+/* >>> NOVO: Container de Confiança (Garantia e Pagamentos) <<< */
+.trustWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
 }
-
-.ctaRecusar:hover {
+.guaranteeSeal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 10px 20px;
+  border: 1px solid rgba(190, 145, 81, 0.3);
+  border-radius: 8px;
   color: var(--text-gold);
-  border-bottom-color: var(--text-gold);
 }
+.guaranteeIcon { color: var(--highlight-gold); }
+.paymentMethods { display: flex; align-items: center; gap: 0.75rem; color: rgba(190, 145, 81, 0.8); }
+.paymentMethods img { height: 24px; }
 
+
+.ctaRecusar {
+  display: block; font-size: 1rem; color: rgba(190, 145, 81, 0.6);
+  text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;
+}
+.ctaRecusar:hover { color: var(--text-gold); border-bottom-color: var(--text-gold); }
+
+/* Adicione ao final de /components/OfertaEspecial/OfertaEspecial.module.css */
+.videoPlayer {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Responsividade */
 @media (max-width: 768px) {
+  .urgencyBar { font-size: 0.8rem; letter-spacing: 1px; }
+  .pageWrapper { padding: 100px 5% 60px; }
   .titulo { font-size: 2.8rem; }
-  .pageWrapper { padding: 80px 5%; }
+  .beneficiosList { grid-template-columns: 1fr; }
   .beneficiosWrapper { padding: 2rem 1.5rem; }
   .ctaPrincipal { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .beneficiosList li { font-size: 1rem; }
+  .offerSpecialPrice { font-size: 2.5rem; }
+  .paymentMethods { flex-wrap: wrap; justify-content: center; }
+}
+
+/* Adicione estas regras ao final do seu arquivo CSS */
+
+/* >>> NOVO: Estilos para o Overlay de Vídeo <<< */
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.4s ease;
+}
+
+.videoOverlay:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.videoOverlay span {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-gold);
+  opacity: 0.8;
+}
+
+.playIconWrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(249, 204, 125, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border: 1px solid rgba(249, 204, 125, 0.3);
+}
+
+.videoOverlay:hover .playIconWrapper {
+  background: rgba(249, 204, 125, 0.2);
+  transform: scale(1.1);
+}
+
+.playIcon {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 35px solid var(--highlight-gold);
+  margin-left: 8px; /* Ajuste para centralizar o triângulo */
 }

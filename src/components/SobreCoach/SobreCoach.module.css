@@ -1,76 +1,125 @@
+/* /components/SobreCoach/SobreCoach.module.css */
+
 .sobreSection {
-  padding: 100px 5%;
-  background-color: #210600; /* Um tom ligeiramente mais claro para diferenciar */
+  /* >>> MUDANÇA PRINCIPAL: Layout 50/50 em tela cheia <<< */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh; /* Ocupa a altura total da tela */
+  background-color: #210600;
   overflow: hidden;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-
-.imageContainer {
-  flex: 1;
-  max-width: 400px;
-  position: relative;
-}
-
-.coachImage {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(190, 145, 81, 0.2);
-}
-
+/* Lado Esquerdo: Conteúdo de Texto */
 .textContainer {
-  flex: 1.5;
+  /* >>> Centralização vertical e espaçamento <<< */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 6rem;
+  z-index: 2; /* Garante que o texto fique à frente de qualquer elemento de fundo */
 }
 
 .title {
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 800;
   color: var(--highlight-gold);
   margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .bio {
   font-size: 1.2rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--text-gold);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  max-width: 500px; /* Evita que as linhas fiquem muito longas */
+}
+
+.bio strong {
+  color: var(--highlight-gold);
+  font-weight: 600;
 }
 
 .badge {
-  display: inline-block;
-  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 12px 24px;
   background-color: rgba(190, 145, 81, 0.1);
-  border: 1px solid var(--text-gold);
+  border: 1px solid rgba(190, 145, 81, 0.3);
   border-radius: 8px;
   color: var(--highlight-gold);
   font-family: var(--font-titles);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+}
+
+
+/* Lado Direito: Imagem Imersiva */
+.imageContainer {
+  position: relative;
+  overflow: hidden; /* Essencial para conter o efeito de zoom */
+}
+
+.coachImage {
+  /* >>> EFEITO CINEMATOGRÁFICO: Zoom sutil e filtro de cor <<< */
+  transition: transform 10s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1.1); /* Começa com um leve zoom */
+  filter: brightness(0.9) contrast(1.05);
+}
+
+.imageContainer:hover .coachImage {
+  transform: scale(1); /* Faz um zoom-out suave ao passar o mouse */
+}
+
+/* >>> EFEITO CINEMATOGRÁFICO: Gradiente de fusão <<< */
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Gradiente do escuro (lado do texto) para transparente (imagem) */
+  background: linear-gradient(to right, #210600 20%, transparent 80%);
+  opacity: 0.7; /* Ajuste a opacidade para o efeito desejado */
 }
 
 /* Responsividade */
 @media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
+  .sobreSection {
+    /* >>> Layout empilhado para mobile <<< */
+    grid-template-columns: 1fr;
+    min-height: auto;
   }
-  
+
+  .imageContainer {
+    /* >>> A imagem vai para o topo no mobile <<< */
+    grid-row: 1; /* Define a imagem como o primeiro item */
+    min-height: 70vh; /* Garante que a imagem ainda seja impactante */
+  }
+
+  .textContainer {
+    grid-row: 2; /* O texto vem depois */
+    padding: 3rem 1.5rem;
+    align-items: center; /* Centraliza o conteúdo no mobile */
+    text-align: center;
+  }
+
   .title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
   
   .bio {
     font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  /* >>> Ajusta o gradiente para o layout vertical <<< */
+  .imageOverlay {
+    background: linear-gradient(to top, #210600 10%, transparent 70%);
+    opacity: 1;
   }
 }

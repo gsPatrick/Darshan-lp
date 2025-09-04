@@ -12,8 +12,8 @@ export default function Home() {
     <main className={styles.main}>
       <Header />
       <Hero />
-      <SobreCoach />
       <Produtos />
+       <SobreCoach />
       <ProvaSocial />
       <UpsellDownsell />
       <Footer />

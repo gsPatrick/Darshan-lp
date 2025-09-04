@@ -1,3 +1,5 @@
+/* /components/Header/Header.module.css */
+
 .header {
   position: fixed;
   top: 0;
@@ -9,7 +11,6 @@
   align-items: center;
   z-index: 1000;
   
-  /* Efeito Cinematográfico */
   background: rgba(43, 8, 0, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -43,15 +44,89 @@
   transform: translateY(-2px);
 }
 
-/* O estilo base do botão está em globals.css, aqui podemos adicionar ajustes */
 .ctaButton {
   background-color: var(--highlight-gold);
   color: var(--background-dark);
 }
 
-/* Responsividade: esconder o menu de navegação em telas menores */
-@media (max-width: 768px) {
-  .navList {
-    display: none;
+
+/* >>> ADICIONADO: Estilos para o Ícone do Menu Hambúrguer <<< */
+.mobileMenuIcon {
+  display: none; /* Escondido por padrão em telas grandes */
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100; /* Garante que fique acima do conteúdo */
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.mobileMenuIcon span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--highlight-gold);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animação do ícone para 'X' quando o menu está aberto */
+.mobileMenuIcon.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.mobileMenuIcon.open span:nth-child(2) {
+  opacity: 0;
+}
+.mobileMenuIcon.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* >>> ADICIONADO: Estilos para o Menu Overlay Mobile <<< */
+.mobileNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(33, 6, 0, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobileNavList {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.mobileNavLink {
+  font-family: var(--font-titles);
+  font-size: 2rem;
+  color: var(--text-gold);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.mobileNavLink:hover {
+  color: var(--highlight-gold);
+}
+
+
+/* >>> ATUALIZADO: Media Query para responsividade <<< */
+@media (max-width: 900px) { /* Ponto de quebra ajustado para 900px */
+  .navDesktop, .ctaButton {
+    display: none; /* Esconde a navegação e o botão de desktop */
+  }
+
+  .mobileMenuIcon {
+    display: flex; /* Mostra o ícone do menu hambúrguer */
   }
 }
