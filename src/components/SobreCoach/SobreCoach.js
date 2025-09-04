@@ -32,13 +32,13 @@ export default function SobreCoach() {
           viewport={{ once: true }}
         >
           {/* Substitua pela imagem real do Coach Darshan */}
-          <Image
-            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop"
-            alt="Coach Darshan Monteiro"
-            width={400}
-            height={500}
-            className={styles.coachImage}
-          />
+    <Image
+  src="/darshan.png"
+  alt="Coach Darshan Monteiro"
+  width={400}
+  height={500}
+  className={styles.coachImage}
+/>
         </motion.div>
         <div className={styles.textContainer}>
           <h2 className={styles.title}>O Mentor por Trás da Coroa</h2>
