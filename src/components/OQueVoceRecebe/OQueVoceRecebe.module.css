@@ -1,13 +1,14 @@
-/* Seção principal - Padrão minimalista e moderno */
+/* Seção principal: Minimalista, escura, com muito espaço */
 .sectionWrapper {
   position: relative;
   padding: 120px 5%;
-  background-color: #050505;
+  background-color: #050505; /* Um preto um pouco mais suave que #000 */
   overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Fundo "Aurora" consistente */
+/* Fundo sutil "Aurora" para profundidade, sem poluir */
 .backgroundEffect {
   position: absolute;
   top: 50%;
@@ -33,7 +34,7 @@
   margin: 0 auto;
 }
 
-/* Título e subtítulo elegantes */
+/* Título e subtítulo: limpos e diretos */
 .titleSection {
   text-align: center;
   margin-bottom: 5rem;
@@ -50,38 +51,36 @@
 
 .subtitle {
   font-size: 1.2rem;
-  color: #a0a0a0;
+  color: #a0a0a0; /* Cinza claro para contraste suave */
   max-width: 550px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-/* Grid com os dois cards de oferta futura */
+/* O grid que contém os dois cards grandes */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
-  margin-bottom: 4rem;
 }
 
-/* Design do Card, consistente com o novo padrão */
+/* O design do card: a peça central */
 .itemCard {
   position: relative;
   height: 100%;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.03); /* Base Glassmorphism */
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-radius: 24px;
   padding: 2.5rem;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex; /* Para o content ocupar 100% da altura */
 }
 
 .itemCard:hover {
   transform: translateY(-10px);
 }
 
-/* Borda e brilho do card */
+/* Borda gradiente sutil */
 .cardBorder {
   position: absolute;
   inset: 0;
@@ -96,48 +95,37 @@
   pointer-events: none;
 }
 
+/* Efeito de brilho que aparece no hover */
 .cardGlow {
   position: absolute;
   inset: 0;
   border-radius: 24px;
-  background: radial-gradient(circle at 50% 120%, var(--highlight-gold), transparent 40%);
+  background: radial-gradient(circle at 100% -20%, var(--highlight-gold), transparent 40%),
+              radial-gradient(circle at 0% 100%, var(--purple-accent), transparent 40%);
   opacity: 0;
-  filter: blur(40px);
+  filter: blur(30px);
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
-.cardGlowPurple {
-  background: radial-gradient(circle at 50% 120%, var(--purple-accent), transparent 40%);
-}
 
 .itemCard:hover .cardGlow {
-  opacity: 0.15;
+  opacity: 0.2;
 }
 
 .cardContent {
-  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
 }
 
-/* Conteúdo interno do card */
 .iconWrapper {
   color: var(--highlight-gold);
   background: rgba(255, 215, 0, 0.1);
   padding: 12px;
   border-radius: 12px;
   border: 1px solid rgba(255, 215, 0, 0.2);
-}
-.iconWrapperPurple {
-  color: var(--purple-accent);
-  background: rgba(138, 43, 226, 0.1);
-  border: 1px solid rgba(138, 43, 226, 0.2);
-}
-
-.textWrapper {
-  flex-grow: 1; /* Faz esta div ocupar o espaço e empurrar o status para baixo */
 }
 
 .itemTag {
@@ -146,9 +134,6 @@
   color: var(--highlight-gold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-.itemTagPurple {
-  color: var(--purple-accent);
 }
 
 .itemTitle {
@@ -165,34 +150,7 @@
   line-height: 1.7;
 }
 
-/* Indicador de Status "bloqueado" */
-.statusIndicator {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  margin-top: 1rem;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.3);
-  font-size: 0.85rem;
-  color: #888;
-}
-
-.statusIndicator svg {
-  flex-shrink: 0;
-}
-
-/* Mensagem de Foco Final */
-.reassuranceText {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #a0a0a0;
-  font-style: italic;
-}
-
-/* Media Queries */
+/* Media Queries para responsividade */
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;

@@ -1,81 +1,197 @@
-// /components/OfertaEspecial/OfertaEspecial.js
-
 'use client';
 
-import { useState, useRef } from 'react'; // >>> ADICIONADO: useState e useRef
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from './OfertaEspecial.module.css';
 
-// Ícones (sem alterações)
-const CheckIcon = () => ( <svg width="24" height="24" viewBox="0 0 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIcon}><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="currentColor"/></svg> );
-const SecurityIcon = () => ( <svg width="24" height="24" viewBox="0 0 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.guaranteeIcon}><path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 12.29L16.59 7.7L18 9.11L12 15.11L6 9.11L7.41 7.7L12 12.29Z" fill="currentColor"/></svg> );
+// Ícones para a seção
+const CheckIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeJoin="round">
+    <polyline points="20 6 9 17 4 12"></polyline>
+  </svg>
+);
+
+const SecurityIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeJoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+  </svg>
+);
+
+const TimerIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeJoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12,6 12,12 16,14" />
+  </svg>
+);
+
+const StarIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+  </svg>
+);
 
 export default function OfertaEspecial({
-  urgencyText, tag, titulo, subtitulo, videoUrl, beneficios, valorOriginal, valorOferta, textoEconomia, textoCtaPrincipal, textoCtaSub, textoCtaRecusar,
+  urgencyText = "⚡ OFERTA LIMITADA - Apenas 24 horas!",
+  tag = "Exclusivo",
+  titulo = "Desbloqueie Seu Potencial Máximo",
+  subtitulo = "Acesso completo ao método que transformou a vida de mais de 10.000 pessoas",
+  videoUrl = "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
+  beneficios = [
+    "<strong>Módulo Exclusivo:</strong> Estratégias avançadas não reveladas",
+    "<strong>Suporte VIP:</strong> Acesso direto ao mentor por 60 dias",
+    "<strong>Comunidade Privada:</strong> Networking com outros membros VIP",
+    "<strong>Bônus Especiais:</strong> Templates e ferramentas exclusivas",
+    "<strong>Certificado:</strong> Reconhecimento oficial do programa",
+    "<strong>Garantia Estendida:</strong> 30 dias para testar sem riscos"
+  ],
+  valorOriginal = "R$ 997",
+  valorOferta = "R$ 297",
+  textoEconomia = "700",
+  textoCtaPrincipal = "QUERO ACESSO AGORA",
+  textoCtaSub = "Pagamento único • Acesso imediato",
+  textoCtaRecusar = "Não, obrigado. Quero continuar pagando mais caro."
 }) {
-  const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } };
-  const itemVariants = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } } };
-
-  // >>> ADICIONADO: Lógica para controlar o vídeo <<<
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [countdown, setCountdown] = useState(24 * 60 * 60); // 24 horas em segundos
   const videoRef = useRef(null);
+
+  // Countdown timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(prev => prev > 0 ? prev - 1 : 0);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   const handlePlayVideo = () => {
     if (videoRef.current) {
-      videoRef.current.play(); // Inicia o vídeo com som, pois foi acionado por um clique
+      videoRef.current.play();
       setIsVideoPlaying(true);
     }
   };
 
   return (
-    <>
-      <motion.div className={styles.urgencyBar} initial={{ y: '-100%' }} animate={{ y: '0%' }} transition={{ duration: 0.7, ease: 'easeOut', delay: 0.5 }}>
-        {urgencyText}
-      </motion.div>
-      <main className={styles.pageWrapper}>
-        <motion.div className={styles.container} variants={containerVariants} initial="hidden" animate="visible">
-          <motion.div className={styles.tag} variants={itemVariants}>{tag}</motion.div>
-          <motion.h1 className={styles.titulo} variants={itemVariants}>{titulo}</motion.h1>
-          <motion.p className={styles.subtitulo} variants={itemVariants}>{subtitulo}</motion.p>
+    <main className={styles.pageWrapper}>
+      <div className={styles.backgroundEffect}></div>
+      <div className={styles.backgroundOrbs}>
+        <div className={styles.orb1}></div>
+        <div className={styles.orb2}></div>
+      </div>
+      
+      <motion.div 
+        className={styles.offerCard}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className={styles.urgencyBar}>
+          <TimerIcon />
+          {urgencyText}
+          <div className={styles.countdownBadge}>
+            {formatTime(countdown)}
+          </div>
+        </div>
+
+        <div className={styles.cardContent}>
+          <div className={styles.header}>
+            <span className={styles.tag}>
+              <StarIcon />
+              {tag}
+            </span>
+            <h1 className={styles.title}>{titulo}</h1>
+            <p className={styles.subtitle}>{subtitulo}</p>
+          </div>
           
-          <motion.div className={styles.videoWrapper} variants={itemVariants}>
-            {/* >>> LÓGICA DO VÍDEO COMPLETAMENTE REFEITA <<< */}
-            {videoUrl.includes('.mp4') && (
-              <>
-                {/* Overlay que aparece ANTES do vídeo tocar */}
-                {!isVideoPlaying && (
-                  <div className={styles.videoOverlay} onClick={handlePlayVideo}>
-                    <div className={styles.playIconWrapper}>
-                      <div className={styles.playIcon}></div>
-                    </div>
-                    <span>Clique para assistir e ativar o som</span>
+          <div className={styles.videoWrapper}>
+            {!isVideoPlaying && (
+              <div className={styles.videoOverlay} onClick={handlePlayVideo}>
+                <div className={styles.playIconWrapper}>
+                  <div className={styles.playIcon}></div>
+                </div>
+                <span>Clique para assistir e ativar o som</span>
+              </div>
+            )}
+            <video 
+              ref={videoRef} 
+              src={videoUrl} 
+              className={styles.videoPlayer} 
+              playsInline 
+              controls={isVideoPlaying}
+            />
+          </div>
+          
+          <div className={styles.benefitsSection}>
+            <h2 className={styles.sectionTitle}>O que você vai destravar imediatamente:</h2>
+            <ul className={styles.benefitsList}>
+              {beneficios.map((item, index) => (
+                <motion.li 
+                  key={index}
+                  className={styles.benefitItem}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <div className={styles.benefitIcon}>
+                    <CheckIcon />
                   </div>
-                )}
-                
-                {/* Player de vídeo sem controles */}
-                <video
-                  ref={videoRef}
-                  src={videoUrl}
-                  className={styles.videoPlayer}
-                  playsInline
-                  // Removemos autoPlay, muted, loop e controls
-                />
-              </>
-            )}
-            {/* O iframe continua funcionando para links externos, se necessário */}
-            {!videoUrl.includes('.mp4') && (
-              <iframe src={videoUrl} frameBorder="0" allow="autoplay; fullscreen" title="Oferta Especial"></iframe>
-            )}
-          </motion.div>
+                  <span dangerouslySetInnerHTML={{ __html: item }} />
+                </motion.li>
+              ))}
+            </ul>
+          </div>
           
-          {/* O resto do componente continua igual */}
-          <motion.div className={styles.beneficiosWrapper} variants={itemVariants}><h2 className={styles.beneficiosTitle}>O que você vai destravar imediatamente:</h2><ul className={styles.beneficiosList}>{beneficios.map((item, index) => (<li key={index}><CheckIcon/><span dangerouslySetInnerHTML={{ __html: item }} /></li>))}</ul></motion.div>
-          <motion.div className={styles.offerBox} variants={itemVariants}><span className={styles.offerNormalPrice}>De <del>{valorOriginal}</del> por apenas:</span><span className={styles.offerSpecialPrice}>{valorOferta}</span><span className={styles.offerSave}>Você economiza {textoEconomia} hoje!</span></motion.div>
-          <motion.div className={styles.ctaContainer} variants={itemVariants}><motion.a href="#" className={`${styles.ctaPrincipal} cta-button`} whileHover={{ scale: 1.05, y: -5, transition: { type: 'spring', stiffness: 400 } }} whileTap={{ scale: 0.95 }}>{textoCtaPrincipal}<span className={styles.ctaSubtext}>{textoCtaSub}</span></motion.a></motion.div>
-          <motion.div className={styles.trustWrapper} variants={itemVariants}><div className={styles.guaranteeSeal}><SecurityIcon /><span>Garantia Incondicional de 7 Dias</span></div><div className={styles.paymentMethods}><span>Pagamento Seguro:</span><img src="/icons/visa.svg" alt="Visa" /><img src="/icons/mastercard.svg" alt="Mastercard" /><img src="/icons/pix.svg" alt="Pix" /></div></motion.div>
-          <motion.a href="#" className={styles.ctaRecusar} variants={itemVariants}>{textoCtaRecusar}</motion.a>
-        </motion.div>
-      </main>
-    </>
+          <div className={styles.offerBox}>
+            <div className={styles.priceInfo}>
+              <span className={styles.priceLabel}>
+                De <del>{valorOriginal}</del> por apenas
+              </span>
+              <span className={styles.priceFinal}>{valorOferta}</span>
+            </div>
+            <div className={styles.savingsBadge}>
+              Economize R$ {textoEconomia}
+            </div>
+          </div>
+
+          <div className={styles.ctaWrapper}>
+            <motion.a 
+              href="#" 
+              className={styles.ctaButton}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {textoCtaPrincipal}
+              <span className={styles.ctaButtonSubtext}>{textoCtaSub}</span>
+            </motion.a>
+          </div>
+          
+          <div className={styles.trustSeals}>
+            <div className={styles.sealItem}>
+              <SecurityIcon />
+              <span>Garantia de 7 Dias</span>
+            </div>
+            <div className={styles.sealItem}>
+              <SecurityIcon />
+              <span>Pagamento 100% Seguro</span>
+            </div>
+            <div className={styles.sealItem}>
+              <SecurityIcon />
+              <span>SSL Criptografado</span>
+            </div>
+          </div>
+
+          <a href="#" className={styles.ctaRecusar}>{textoCtaRecusar}</a>
+        </div>
+
+        <div className={styles.cardBorder}></div>
+        <div className={styles.cardGlow}></div>
+      </motion.div>
+    </main>
   );
 }

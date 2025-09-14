@@ -1,0 +1,105 @@
+/* /components/StickyCTA/StickyCTA.module.css (DESIGN CORRIGIDO E ROBUSTO) */
+
+.stickyWrapper {
+  display: none; /* Escondido por padrão em desktop */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* OCUPA 100% DA LARGURA PARA EVITAR BUGS */
+  z-index: 990;
+  
+  /* Efeito de Glassmorphism com borda superior */
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contentContainer {
+  width: 100%;
+  max-width: 1100px; /* Alinhado com o container principal do site */
+  margin: 0 auto;
+  padding: 0.75rem 1rem; /* Espaçamento interno para o conteúdo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.coverWrapper {
+  flex-shrink: 0;
+}
+
+.bookCover {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.textWrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  min-width: 0;
+}
+
+.ctaTitle {
+  color: #fff;
+  font-family: var(--font-titles);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ctaSubtitle {
+  color: var(--highlight-gold);
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.ctaButton {
+  flex-shrink: 0;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-titles);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #000;
+  background: var(--highlight-gold);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+  background: #fff;
+}
+
+
+/* --- RESPONSIVIDADE CORRIGIDA --- */
+
+/* ATIVA A BARRA SOMENTE EM DISPOSITIVOS MÓVEIS E TABLETS PEQUENOS */
+@media (max-width: 768px) {
+  .stickyWrapper {
+    display: block;
+  }
+}
+
+/* Em telas muito estreitas, esconde o texto para não poluir */
+@media (max-width: 420px) {
+  .textWrapper {
+    display: none;
+  }
+  .ctaButton {
+    flex-grow: 1; /* Faz o botão ocupar o espaço que era do texto */
+    text-align: center;
+  }
+}

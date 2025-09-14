@@ -1,75 +1,119 @@
+/* /components/Footer/Footer.module.css (NOVO DESIGN PREMIUM) */
 
 .footer {
-  padding: 80px 5% 40px 5%;
-  background-color: #210600; /* Tom escuro para diferenciar */
-  border-top: 1px solid rgba(190, 145, 81, 0.2);
+  padding: 80px 5% 40px;
+  background-color: #0A0A0A; /* Tom escuro e profundo */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
 }
 
-/* 1. CTA Secundário */
+/* Seção do CTA Final */
 .ctaContainer {
+  text-align: center;
   margin-bottom: 4rem;
 }
 
 .ctaTitle {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--highlight-gold);
+  font-family: var(--font-titles);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
 .ctaSubtitle {
   font-size: 1.1rem;
-  color: var(--text-gold);
-  margin: 0.5rem 0 2rem 0;
+  color: #a0a0a0;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ctaButton {
-  padding: 14px 35px;
-  font-size: 1rem;
+  padding: 1.1rem 3rem;
+  font-size: 1.1rem;
 }
 
-/* 2. Conteúdo Principal */
+/* Divisor sutil e elegante */
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  margin: 2rem 0;
+}
+
+/* Grid principal do conteúdo do footer */
 .mainContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Coluna da marca maior */
+  gap: 2rem;
   padding: 2rem 0;
-  margin-bottom: 2rem;
-  border-top: 1px solid rgba(190, 145, 81, 0.1);
-  border-bottom: 1px solid rgba(190, 145, 81, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+  text-align: left;
 }
 
-.logo {
+.brandColumn .logo {
   font-family: var(--font-titles);
   font-size: 2rem;
   font-weight: 800;
   color: var(--highlight-gold);
+  margin-bottom: 0.5rem;
+}
+
+.brandColumn .tagline {
+  color: #a0a0a0;
+  font-size: 1rem;
+}
+
+.linksColumn h4, .socialColumn h4 {
+  font-family: var(--font-titles);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
   letter-spacing: 1px;
+  margin-bottom: 1.5rem;
 }
 
-.socials {
+.linksColumn ul {
+  list-style: none;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.socialLink {
-  color: var(--text-gold);
-  font-weight: 500;
+.linksColumn ul a {
+  color: #a0a0a0;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.socialLink:hover {
+.linksColumn ul a:hover {
   color: var(--highlight-gold);
 }
 
-/* 3. Informações Legais */
-.legal {
+.socialIcons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socialIcons a {
+  color: #a0a0a0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Seção Legal e de Créditos */
+.legalContainer {
+  padding-top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,32 +123,61 @@
 
 .copyright {
   font-size: 0.9rem;
-  color: rgba(190, 145, 81, 0.7);
+  color: #707070;
 }
 
-.legalLinks {
-  display: flex;
-  gap: 1rem;
+.developerCredit {
   font-size: 0.9rem;
+  color: #707070;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.legalLinks a {
-  color: rgba(190, 145, 81, 0.7);
+.developerCredit a {
+  color: #a0a0a0;
+  font-weight: 600;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.legalLinks a:hover {
-  color: var(--text-gold);
+.developerCredit a:hover {
+  color: var(--highlight-gold);
 }
 
-.legalLinks span {
-  color: rgba(190, 145, 81, 0.3);
-}
 
-/* Responsividade */
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
-  .legal {
-    flex-direction: column-reverse;
+  .mainContent {
+    grid-template-columns: 1fr; /* Empilha as colunas */
+    text-align: center;
+  }
+  .linksColumn ul, .socialIcons {
+    justify-content: center;
+    align-items: center;
+  }
+  .legalContainer {
+    flex-direction: column-reverse; /* Crédito abaixo do copyright */
     gap: 1.5rem;
   }
+}
+
+@media (max-width: 480px) {
+  .ctaTitle {
+    font-size: 2rem; /* Título ligeiramente menor */
+  }
+
+  .ctaSubtitle {
+    font-size: 1rem;
+  }
+
+  /* --- INÍCIO DA CORREÇÃO PARA O BOTÃO --- */
+  .ctaButton {
+    width: 100%; /* Botão ocupa a largura total */
+    max-width: 350px; /* Previne que fique excessivamente largo */
+    padding: 1rem 1.5rem; /* Padding horizontal reduzido */
+    font-size: 1rem; /* Tamanho da fonte reduzido */
+    white-space: nowrap; /* Impede a quebra de linha do texto */
+  }
+  /* --- FIM DA CORREÇÃO --- */
 }

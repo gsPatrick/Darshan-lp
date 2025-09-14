@@ -27,7 +27,6 @@ export default function Hero() {
   return (
     <section id="inicio" className={styles.heroSection}>
       <div className={styles.background}>
-        {/* A imagem do cliente, que preencherá todo o fundo, vai aqui */}
         <div className={styles.backgroundImage}></div>
         <div className={styles.overlay}></div>
       </div>
@@ -42,13 +41,16 @@ export default function Hero() {
           Filho sem Pai: Do Silêncio à Coroa
         </motion.h1>
         
+        {/* --- INÍCIO DA MUDANÇA (SUBTÍTULO) --- */}
         <motion.p className={styles.subtitle} variants={itemVariants}>
-          Um livro-movimento para romper a programação da ausência e ativar sua <strong>Identidade de Rei</strong>.
+          Um livro-movimento para romper a programação da ausência, ativar sua identidade e assumir o trono da sua história.
         </motion.p>
+        {/* --- FIM DA MUDANÇA --- */}
 
-        {/* O botão secundário e os bullets foram removidos */}
         <motion.div className={styles.ctaContainer} variants={itemVariants}>
-          <button className="cta-button">Garantir Meu Exemplar Agora</button>
+          {/* --- INÍCIO DA MUDANÇA (TEXTO DO BOTÃO) --- */}
+          <button className="cta-button">GARANTIR MEU EXEMPLAR</button>
+          {/* --- FIM DA MUDANÇA --- */}
         </motion.div>
 
         <motion.div className={styles.trustBar} variants={itemVariants}>

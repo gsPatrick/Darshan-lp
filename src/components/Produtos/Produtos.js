@@ -82,7 +82,6 @@ export default function Produtos() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <motion.div variants={itemVariants}>
-          {/* >>> NOVO TAG DE DESTAQUE <<< */}
           <span className={styles.tag}>O Portal da Transformação</span>
           <h2 className={styles.mainTitle}>A Jornada da Ferida ao Governo</h2>
           <p className={styles.mainSubtitle}>
@@ -125,7 +124,7 @@ export default function Produtos() {
           ))}
         </motion.div>
 
-        {/* >>> GRUPO DE BOTÕES DE CTA (HOTMART E AMAZON) <<< */}
+        {/* --- INÍCIO DA MUDANÇA (NOVO BLOCO DE CTA) --- */}
         <motion.div className={styles.ctaGroup} variants={itemVariants}>
           <motion.a 
             href="#hotmart" // <-- SUBSTITUA PELO SEU LINK REAL DA HOTMART
@@ -133,17 +132,16 @@ export default function Produtos() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Acesso (Hotmart)
+            GARANTIR MEU EXEMPLAR (DIGITAL)
           </motion.a>
           <motion.a 
             href="#amazon" // <-- SUBSTITUA PELO SEU LINK REAL DA AMAZON
-            className="secondary-button cta-button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className={styles.alternativeLink}
           >
-            Acesso (Amazon)
+            Prefere capa comum na Amazon? → Comprar na Amazon
           </motion.a>
         </motion.div>
+        {/* --- FIM DA MUDANÇA --- */}
 
       </motion.div>
     </section>

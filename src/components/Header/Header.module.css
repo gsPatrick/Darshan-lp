@@ -1,28 +1,49 @@
-/* /components/Header/Header.module.css */
+/* /components/Header/Header.module.css (NOVO DESIGN PREMIUM) */
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 5%;
+  z-index: 1000;
+  
+  /* EFEITO DE GLASSMORPHISM */
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* BORDA INFERIOR DE LUZ */
+  border-bottom: 1px solid;
+  border-image-source: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+  border-image-slice: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  
-  background: rgba(43, 8, 0, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(190, 145, 81, 0.1);
+  transition: justify-content 0.3s ease;
 }
 
 .logo {
   font-family: var(--font-titles);
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--highlight-gold);
+  font-size: 1.6rem;
+  font-weight: 700;
   letter-spacing: 1px;
+  text-decoration: none;
+  background: linear-gradient(135deg, #fff, var(--highlight-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: font-size 0.3s ease;
+}
+
+/* NAVEGAÇÃO DESKTOP */
+.navDesktop {
+  display: block; /* Visível por padrão */
 }
 
 .navList {
@@ -32,101 +53,71 @@
 }
 
 .navLink {
+  position: relative;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text-gold);
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.navLink:hover {
-  color: var(--highlight-gold);
-  transform: translateY(-2px);
-}
-
-.ctaButton {
-  background-color: var(--highlight-gold);
-  color: var(--background-dark);
-}
-
-
-/* >>> ADICIONADO: Estilos para o Ícone do Menu Hambúrguer <<< */
-.mobileMenuIcon {
-  display: none; /* Escondido por padrão em telas grandes */
-  width: 30px;
-  height: 25px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 1100; /* Garante que fique acima do conteúdo */
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.mobileMenuIcon span {
-  width: 100%;
-  height: 3px;
-  background-color: var(--highlight-gold);
-  border-radius: 2px;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Animação do ícone para 'X' quando o menu está aberto */
-.mobileMenuIcon.open span:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
-}
-.mobileMenuIcon.open span:nth-child(2) {
-  opacity: 0;
-}
-.mobileMenuIcon.open span:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
-}
-
-
-/* >>> ADICIONADO: Estilos para o Menu Overlay Mobile <<< */
-.mobileNav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(33, 6, 0, 0.95);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.mobileNavList {
-  list-style: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.mobileNavLink {
-  font-family: var(--font-titles);
-  font-size: 2rem;
-  color: var(--text-gold);
-  font-weight: 700;
+  color: #a0a0a0;
+  text-decoration: none;
+  padding: 0.5rem 0;
   transition: color 0.3s ease;
 }
 
-.mobileNavLink:hover {
-  color: var(--highlight-gold);
+.navLink:hover {
+  color: #fff;
+}
+
+/* EFEITO DE UNDERLINE ANIMADO */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: var(--highlight-gold);
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* BOTÃO CTA */
+.ctaButton {
+  display: block; /* Visível por padrão */
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-titles);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #000;
+  background-color: var(--highlight-gold);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+  background-color: #fff;
 }
 
 
-/* >>> ATUALIZADO: Media Query para responsividade <<< */
-@media (max-width: 900px) { /* Ponto de quebra ajustado para 900px */
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  /* ESCONDE A NAVEGAÇÃO E O BOTÃO NO MOBILE */
   .navDesktop, .ctaButton {
-    display: none; /* Esconde a navegação e o botão de desktop */
+    display: none;
   }
 
-  .mobileMenuIcon {
-    display: flex; /* Mostra o ícone do menu hambúrguer */
+  .container {
+    padding: 1rem 5%;
+    justify-content: center; /* CENTRALIZA O LOGO */
+  }
+
+  .logo {
+    font-size: 1.4rem;
   }
 }

@@ -4,24 +4,29 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styles from './ProvaSocial.module.css';
 
-// Dados dos depoimentos (facilita a manutenção)
+// --- INÍCIO DA MUDANÇA: DADOS DOS DEPOIMENTOS ATUALIZADOS ---
 const testimonials = [
   {
     name: 'João S.',
     quote: 'Eu lia sobre ausência, mas ainda era refém dela. Este livro virou a chave da minha identidade. Minha voz voltou.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1887&auto=format&fit=crop', // Placeholder
+    // Imagem que remete ao público-alvo
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop', 
   },
   {
     name: 'Marina A.',
     quote: 'Parei de repetir padrões e comecei a construir. A coroa virou prática diária, não só uma ideia.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop', // Placeholder
+     // Imagem que remete ao público-alvo
+    image: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1887&auto=format&fit=crop',
   },
   {
     name: 'Rafael D.',
-    quote: 'Pertencimento real. É isso que eu sinto agora. Finalmente encontrei meu lugar e minha força.',
-    image: 'https://images.unsplash.com/photo-1627541718143-1adc1b582e62?q=80&w=1887&auto=format&fit=crop', // Placeholder
+    // Frase de pertencimento adicionada
+    quote: 'Pertencimento real. Pela primeira vez me senti filho, não órfão. Finalmente encontrei meu lugar e minha força.',
+     // Imagem que remete ao público-alvo
+    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1887&auto=format&fit=crop', 
   },
 ];
+// --- FIM DA MUDANÇA ---
 
 export default function ProvaSocial() {
   const containerVariants = {

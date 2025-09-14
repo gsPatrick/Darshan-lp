@@ -60,7 +60,6 @@
   gap: 1.5rem;
 }
 
-/* >>> ADICIONADO: Estilo para o novo tag <<< */
 .tag {
   display: inline-block;
   padding: 8px 20px;
@@ -153,19 +152,38 @@
   max-width: 480px;
 }
 
-/* >>> ADICIONADO: Container para os botões de CTA <<< */
+/* --- INÍCIO DAS MUDANÇAS --- */
 .ctaGroup {
   margin-top: 2rem;
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column; /* Organiza os itens verticalmente */
+  align-items: flex-start; /* Alinha à esquerda */
+  gap: 1rem;
   width: 100%;
 }
 
-/* Garante que os botões dentro do grupo se ajustem */
-.ctaGroup > a {
-  flex: 1; /* Faz os botões ocuparem o espaço igualmente */
+/* Garante que o botão principal ocupe a largura necessária */
+.ctaGroup > a.cta-button {
+  width: 100%;
+  max-width: 450px;
   text-align: center;
 }
+
+/* Novo estilo para o link de alternativa */
+.alternativeLink {
+  font-size: 0.9rem;
+  color: var(--text-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  margin-left: 5px; /* Pequeno ajuste de alinhamento */
+}
+
+.alternativeLink:hover {
+  color: var(--highlight-gold);
+  border-bottom-color: var(--highlight-gold);
+}
+/* --- FIM DAS MUDANÇAS --- */
 
 
 @media (max-width: 1024px) {
@@ -203,10 +221,16 @@
   .accordionTitle {
     font-size: 1.2rem;
   }
-
-  /* >>> ADICIONADO: Responsividade para os botões <<< */
+  
   .ctaGroup {
-    flex-direction: column; /* Empilha os botões verticalmente */
-    gap: 1rem;
+    align-items: center; /* Centraliza no mobile */
+  }
+
+  .ctaGroup > a.cta-button {
+    width: 100%;
+  }
+
+  .alternativeLink {
+    text-align: center;
   }
 }
